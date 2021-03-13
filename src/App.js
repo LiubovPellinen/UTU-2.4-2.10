@@ -11,6 +11,7 @@ class App extends React.Component {
     }
   }
   componentDidMount() {
+    
      axios
       .get('http://localhost:3001/reminders')
       .then(response => {
@@ -23,18 +24,22 @@ class App extends React.Component {
       if (filter.length === 0) {
         const remObject = {
           name,
-          date,
-          id: this.state.reminders.length + 1
+          date
         }
-        const reminders = this.state.reminders.concat(remObject)
-        this.setState({
-          reminders: reminders,
+        
+        axios.post('http://localhost:3001/reminders', remObject)
+        .then(response => {
+          this.setState({
+            reminders: this.state.reminders.concat(response.data),
+           // newNote: ''
+          })
         })
 
       } else alert('This reminder is already on the list')
     } else alert('Fill in all fields')
   }
    render() {
+     console.log(this.state.reminders)
     return (
       <div>
         <h2>Add new reminder</h2>
