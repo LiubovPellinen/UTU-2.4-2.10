@@ -1,40 +1,46 @@
 import React from 'react'
-
-addRem = (event) => {
-    event.preventDefault()
-    let curName=this.state.currentReminder.name
-    let curDate=this.state.currentReminder.date
-    if (curName && curDate ) {
-       let filter=this.state.reminders.filter(reminder => reminder.name==curName && reminder.date==curDate)
-       if (filter.length===0){
-        const remObject = {
-          name: this.state.currentReminder.name,
-          date: this.state.currentReminder.date,
-          id: this.state.reminders.length + 1
-        }
-
-        const reminders = this.state.reminders.concat(remObject)
-
-        this.setState({
-          reminders: reminders,
-        //  newName: ''
-        })
-        
-      } else alert('This reminder is already on the list')
-     } else alert('Fill in all fields')
+class AddReminder extends React.Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      date: '',
+      name: ''
+    }
   }
+  addReminderForm = (event) => {
+    event.preventDefault()
+    this.props.addReminder(this.state.name, this.state.date)
+  }
+
   handleNameChange = (event) => {
-    //console.log(event.target.value)
-    this.setState({ currentReminder: {
+    this.setState({
       name: event.target.value,
-      date: this.state.currentReminder.date
-    } })
+      date: this.state.date
+    })
   }
   handleDateChange = (event) => {
-    //console.log(event.target.value)
-    this.setState({ currentReminder: {
-      name: this.state.currentReminder.name,
+
+    this.setState({
+      name: this.state.name,
       date: event.target.value
-    } })
+    })
   }
-  export default AddRemind
+  render() {
+    return (
+      <form onSubmit={this.addReminderForm} >
+        <div>
+          Name: <input value={this.state.name}
+            onChange={this.handleNameChange} />
+        </div>
+        <div>
+          Date: <input type="datetime-local" value={this.state.date}
+            onChange={this.handleDateChange} />
+        </div>
+        <div>
+          <button type="submit">Add</button>
+        </div>
+      </form>
+    )
+  }
+}
+export default AddReminder
