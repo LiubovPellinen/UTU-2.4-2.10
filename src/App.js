@@ -1,19 +1,21 @@
-import React from 'react';
+import React from 'react'
+import axios from 'axios'
 import AddReminder from './components/AddReminder'
-import Reminder from './components/Reminder';
+import Reminder from './components/Reminder'
 class App extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      reminders: [
-        {
-          name: 'Buy some eggs',
-          date: "2018-11-10 13:00",
-          id: 0
-        }
-      ],
-
+      reminders: [],
+       
     }
+  }
+  componentDidMount() {
+     axios
+      .get('http://localhost:3001/reminders')
+      .then(response => {
+            this.setState({ reminders: response.data })
+      })
   }
   addReminder = (name, date) => {
     if (name && date) {
