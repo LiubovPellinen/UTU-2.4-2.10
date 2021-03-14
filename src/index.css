@@ -1,3 +1,7 @@
+
+
+
+/*
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,3 +15,31 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+*/
+.reminders{
+  padding-left: 40%;
+  
+}
+.date, .button, td, .name{
+  margin-top: 10px;
+  font-size: 18px;
+}
+.add{
+  color: rgb(1, 27, 1);
+  border-color:green;
+  border-radius: 5px;
+  background-color: rgb(43, 226, 58);
+}
+.delete{
+  color:rgb(59, 1, 1);
+  border-color:rgb(121, 1, 1);
+  border-radius: 5px;
+  background-color: rgb(226, 43, 43);
+}
+.name, .date{
+  width: 210px;
+}
+.remName{
+  margin-left: 40px;
+}
+

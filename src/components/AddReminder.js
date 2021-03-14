@@ -28,16 +28,16 @@ class AddReminder extends React.Component {
   render() {
     return (
       <form onSubmit={this.addReminderForm} >
-        <div>
+        <div className="name">
           Name: <input value={this.state.name}
             onChange={this.handleNameChange} />
         </div>
-        <div>
+        <div className="date">
           Date: <input type="datetime-local" value={this.state.date}
             onChange={this.handleDateChange} />
         </div>
-        <div>
-          <button type="submit">Add</button>
+        <div className="button">
+          <button className="add" type="submit">Add</button>
         </div>
       </form>
     )

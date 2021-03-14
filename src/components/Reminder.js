@@ -1,9 +1,15 @@
 import React from 'react'
 
-const Reminder = ({ reminder }) => {
-  
+const Reminder = ({ reminder, deleteReminder }) => {
+
   return (
-        <li> {reminder.date.toString().replace('T',"   ")} {reminder.name}  </li>
+    
+    <tr>
+      <td>{reminder.date.toString().replace('T'," ")}</td>
+      <td className="remName">{reminder.name} </td>
+      <td> <button className="delete" onClick={deleteReminder} >Delete</button></td>
+    </tr>
+
   )
 }
 
