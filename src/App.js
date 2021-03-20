@@ -20,14 +20,15 @@ class App extends React.Component {
       })
   }
   addReminder = (name, date) => {
+   let date_field=date.toString().replace('T'," ");
     if (name && date) {
-      let filter = this.state.reminders.filter(reminder => reminder.name === name && reminder.date === date)
+      let filter = this.state.reminders.filter(reminder => reminder.name === name && reminder.date === date_field)
       if (filter.length === 0) {
         const remObject = {
           name,
-          date:date.toString().replace('T'," ")
+          date:date_field
         }
-
+       
         axios.post('http://localhost:3001/reminders', remObject)
           .then(response => {
             this.setState({
