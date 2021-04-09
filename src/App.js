@@ -14,7 +14,8 @@ class App extends React.Component {
   componentDidMount() {
 
     axios
-      .get('http://localhost:3001/reminders')
+     // .get('http://localhost:3001/api/reminders')
+     .get('https://reminders-utu.herokuapp.com/api/reminders')
       .then(response => {
         this.setState({ reminders: response.data })
       })
@@ -29,7 +30,8 @@ class App extends React.Component {
           date:date_field
         }
        
-        axios.post('http://localhost:3001/reminders', remObject)
+        //axios.post('http://localhost:3001/api/reminders', remObject)
+        axios.post('https://reminders-utu.herokuapp.com/api/reminders', remObject)
           .then(response => {
             this.setState({
               reminders: this.state.reminders.concat(response.data),
@@ -42,7 +44,8 @@ class App extends React.Component {
   }
   deleteReminderOf = (id) => {
     return () => {
-      const url = `http://localhost:3001/reminders/${id}`
+     // const url = `http://localhost:3001/api/reminders/${id}`
+     const url = `https://reminders-utu.herokuapp.com/api/reminders/${id}`
       const question=window.confirm("Do you really want to delete this reminder?")
       if(question){
       axios
