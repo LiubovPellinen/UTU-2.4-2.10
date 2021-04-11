@@ -27,9 +27,9 @@ class App extends React.Component {
       })
   }
   addReminder = (name, date) => {
-   let date_field=date.toString().replace('T'," ");
-    if (name && date) {
-      let filter = this.state.reminders.filter(reminder => reminder.name === name && reminder.date === date_field)
+   let date_field =date.toString().replace('T'," ");
+     if (name && date) { 
+       let filter = this.state.reminders.filter(reminder => reminder.name === name && reminder.date === date_field)
       if (filter.length === 0) {
         const remObject = {
           name,
